@@ -1,7 +1,7 @@
 import { Button } from "../../components";
 import { TextInputField } from "../../components";
-import kvLogo from "../../assets/kv-logo.png";
-import kvLoginAside from "../../assets/kv-login.jpeg";
+import kvLogo from "/assets/kv-logo.png";
+import kvLoginAside from "/assets/kv-login.jpeg";
 import "./Login.css";
 
 const Login = () => {

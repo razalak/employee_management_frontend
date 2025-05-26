@@ -1,4 +1,4 @@
-import kvLogo from "../../assets/kv-logo.png";
+import kvLogo from "/assets/kv-logo.png";
 import "./header.css";
 
 const Header = () => {
