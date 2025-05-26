@@ -1,0 +1,17 @@
+.site-header {
+  background-color: white;
+  width: 100lvw;
+}
+
+.site-header .header-item {
+  width: 300px;
+  background-color: #f9f9fe;
+  display: block;
+  text-align: center;
+  padding: 0.5em 0;
+}
+
+.site-header .site-logo {
+  width: 75%;
+  display: inline-block;
+}

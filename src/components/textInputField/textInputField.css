@@ -1,0 +1,41 @@
+.text-input-field-div label {
+  font-weight: 600;
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 16px;
+}
+
+.text-input-field-div input {
+  background-color: #fafafa;
+  height: 3em;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  border: 1px solid #e4e4e4;
+}
+
+.text-input-field-div input::placeholder {
+  color: #747474;
+}
+
+.text-input-field-div input:focus {
+  outline-color: #00a6f0;
+}
+
+.text-input-field-div .label--animated {
+  position: relative;
+  font-size: 14px;
+}
+
+.text-input-field-div .label--animated span {
+  transition-property: top;
+  transition-duration: 0.3s;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.text-input-field-div .input--animated:focus + span {
+  background-color: white;
+  padding: 2px;
+  top: -10px;
+}

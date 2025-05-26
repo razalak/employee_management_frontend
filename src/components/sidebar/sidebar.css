@@ -1,0 +1,11 @@
+.main-layout-aside {
+  background-color: white;
+  width: 300px;
+  flex-shrink: 0;
+}
+
+.main-layout-aside-nav {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+}

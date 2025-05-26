@@ -1,0 +1,36 @@
+.button {
+  height: 50px;
+  width: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1em 2em;
+  font-size: 1em;
+  font-weight: 700;
+  color: white;
+  border-radius: 0.3em;
+  border: none;
+}
+
+.button--default {
+  background-color: #03aeee;
+  box-shadow: 0px 0px 18px 1px rgba(0, 166, 240, 0.34);
+}
+
+.button--default:hover {
+  background-color: #0096e0;
+}
+
+.button--full-width {
+  width: 100%;
+}
+
+.button--outline {
+  color: #545454;
+  background-color: white;
+  border: 1px solid #747474;
+}
+
+.button--outline:hover {
+  background-color: #f4f4f4;
+}

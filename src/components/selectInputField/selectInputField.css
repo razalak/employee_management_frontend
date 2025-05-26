@@ -1,0 +1,22 @@
+.select-input-field-div label {
+  font-weight: 600;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.select-input-field-div select {
+  background-color: #fafafa;
+  height: 3em;
+  border-radius: 0.5em;
+  padding: 0.5em;
+  border: 1px solid #e4e4e4;
+}
+
+.select-input-field-div select:invalid {
+  color: #747474;
+}
+
+.select-input-field-div select:focus {
+  outline-color: #00a6f0;
+}
