@@ -1,5 +1,5 @@
-import Button from "../../components/button/Button";
-import TextInputField from "../../components/textInputField/textInputField";
+import { Button } from "../../components";
+import { TextInputField } from "../../components";
 import kvLogo from "../../assets/kv-logo.png";
 import kvLoginAside from "../../assets/kv-login.jpeg";
 import "./Login.css";

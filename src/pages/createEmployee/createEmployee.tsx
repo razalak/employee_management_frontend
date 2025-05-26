@@ -1,7 +1,7 @@
-import Button from "../../components/button/Button";
-import SectionHeader from "../../components/sectionHeader/sectionHeader";
-import SelectInputField from "../../components/selectInputField/selectInputField";
-import TextInputField from "../../components/textInputField/textInputField";
+import { Button } from "../../components";
+import { SectionHeader } from "../../components";
+import { SelectInputField } from "../../components";
+import { TextInputField } from "../../components";
 import "./createEmployee.css";
 
 const CreateEmployee = () => {

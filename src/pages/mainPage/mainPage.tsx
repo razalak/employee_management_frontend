@@ -1,5 +1,5 @@
-import MainLayout from "../../components/mainLayout/mainLayout";
-import CreateEmployee from "../createEmployee/createEmployee";
+import { MainLayout } from "../../components";
+import { CreateEmployee } from "../index";
 import "./mainPage.css";
 
 const MainPage = () => {
