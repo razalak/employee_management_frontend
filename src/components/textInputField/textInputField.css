@@ -21,6 +21,10 @@
   outline-color: #00a6f0;
 }
 
+.text-input-field-div .input--animated {
+  background-color: white;
+}
+
 .text-input-field-div .label--animated {
   position: relative;
   font-size: 14px;
@@ -35,7 +39,22 @@
 }
 
 .text-input-field-div .input--animated:focus + span {
+  color: #00a6f0;
+}
+
+.text-input-field-div .input--animated:focus + span,
+.text-input-field-div .input--animated:not(:placeholder-shown) + span {
   background-color: white;
   padding: 2px;
   top: -10px;
+}
+
+.text-input-field-div .input--animated:not:placeholder-shown + span {
+  display: none;
+}
+
+.end-adornment {
+  position: absolute;
+  top: 10px;
+  right: 10px;
 }

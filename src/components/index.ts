@@ -1,4 +1,5 @@
 import Button from "./button/Button";
+import CheckBox from "./checkBox/checkBox";
 import Header from "./header/header";
 import MainLayout from "./mainLayout/mainLayout";
 import SectionHeader from "./sectionHeader/sectionHeader";
@@ -16,4 +17,5 @@ export {
   Sidebar,
   SidebarItem,
   TextInputField,
+  CheckBox,
 };
