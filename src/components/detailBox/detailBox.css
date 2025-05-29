@@ -1,0 +1,18 @@
+.label{
+    color: #8B8D9D;
+    font-size: 16px;
+
+}
+
+.value{
+    color:black;
+    font-size: 16px;
+    margin-top: 20px;
+    max-width: 228px;
+}
+
+.data-segment{
+    width:20%;
+    margin-top: 30px;
+    padding-left: 30px;
+}

@@ -2,3 +2,8 @@
   height: calc(100vh - 69px);
   display: flex;
 }
+
+.outlet{
+  width: 100%;
+  margin:20px;
+}

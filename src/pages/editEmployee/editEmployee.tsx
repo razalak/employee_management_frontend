@@ -1,12 +1,12 @@
-import { useState } from "react";
+
 import { Button } from "../../components";
 import { SectionHeader } from "../../components";
 import { SelectInputField } from "../../components";
 import { TextInputField } from "../../components";
-import "./createEmployee.css";
+import "./editEmployee.css";
 import { useNavigate } from "react-router-dom";
 
-const CreateEmployee = () => {
+const EditEmployee = () => {
   const createClicked = () => alert("Created");
   const cancelClicked = () => alert("Cancelled");
   const navigate = useNavigate();
@@ -21,7 +21,7 @@ const CreateEmployee = () => {
 
   return (
     <main className="create-employee-page-main">
-      <SectionHeader title="Create Employee" />
+      <SectionHeader title="Edit Employee" />
       <form className="employee-create-form">
         <div className="employee-detail-input-section">
           <TextInputField label="Employee Name" placeholder="Employee Name" />
@@ -50,6 +50,7 @@ const CreateEmployee = () => {
             <TextInputField label="" placeholder="Address Line 1" />
             <TextInputField label="" placeholder="Address Line 2" />
           </div>
+          <TextInputField label="Employee ID" placeholder="7398378272" disabled={true}/>
         </div>
         <div className="form-buttons">
           <Button label="Create" onClick={createClicked} variants="default" />
@@ -61,4 +62,4 @@ const CreateEmployee = () => {
   );
 };
 
-export default CreateEmployee;
+export default EditEmployee;

@@ -21,8 +21,8 @@ const SelectInputField = ({
           <option value="" selected hidden disabled>
             {placeholder}
           </option>
-          {values.map((item, idx) => (
-            <option key={idx} value={item}>
+          {values.map((item) => (
+            <option  value={item}>
               {item}
             </option>
           ))}

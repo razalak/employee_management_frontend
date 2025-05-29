@@ -4,8 +4,10 @@ import kvLogo from "/assets/kv-logo.png";
 import kvLoginAside from "/assets/kv-login.jpeg";
 import "./Login.css";
 import { useEffect, useRef, useState } from "react";
-import useMousePointer from "../../hooks/useMousePointer";
+// import useMousePointer from "../../hooks/useMousePointer";
 import useLocalStorage from "../../hooks/useLocalStorage";
+import { Navigate, useNavigate } from "react-router-dom";
+
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -15,12 +17,21 @@ const Login = () => {
     passwordError: "",
   });
   const usernameRef = useRef<HTMLInputElement | null>(null);
-  const mousePosition = useMousePointer();
-  const localStorage = useLocalStorage();
+  // const mousePosition = useMousePointer();
+  const localStorageHook = useLocalStorage();
   const [isPasswordShown, setIsPasswordShown] = useState(
-    Boolean(localStorage.get("showPassword"))
+    Boolean(localStorageHook.get("showPassword"))
   );
-  const logIn = () => alert("Logged in");
+   const navigate=useNavigate();
+  
+ 
+ const handleLogin=()=>{
+    if(username==="dias"&&password==="12345"){
+    localStorage.setItem("IsLoggedIn","true");
+    navigate("/employee");
+  }
+}
+
 
   useEffect(() => {
     if (username.length > 10) {
@@ -44,6 +55,10 @@ const Login = () => {
     }
   }, []);
 
+
+  if(localStorage.getItem("IsLoggedIn")==="true"){
+    return <Navigate to="/employee"/>
+  }
   return (
     <div className="login-content">
       <aside className="login-aside">
@@ -60,7 +75,7 @@ const Login = () => {
             <a href="#">
               <img className="logo" src={kvLogo} alt="logo" />
             </a>
-            <p>{`x: ${mousePosition.x}, y: ${mousePosition.y}`}</p>
+            {/* <p>{`x: ${mousePosition.x}, y: ${mousePosition.y}`}</p> */}
           </div>
           <div>
             <TextInputField
@@ -110,7 +125,7 @@ const Login = () => {
               checkedState={isPasswordShown}
               onCheckedChange={() => {
                 setIsPasswordShown((oldVal) => {
-                  localStorage.set("showPassword", String(!oldVal));
+                  localStorageHook.set("showPassword", String(!oldVal));
                   return !oldVal;
                 });
               }}
@@ -124,7 +139,7 @@ const Login = () => {
           </p>
           <Button
             label="Log In"
-            onClick={logIn}
+            onClick={handleLogin}
             variants="default full-width"
           />
         </div>
@@ -132,5 +147,6 @@ const Login = () => {
     </div>
   );
 };
+
 
 export default Login;

@@ -9,6 +9,7 @@ type TextInputFieldProps = {
   ref?: React.RefObject<HTMLInputElement | null>;
   endAdornment?: React.ReactNode;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+   disabled?: boolean; 
 };
 
 const TextInputField = ({
@@ -20,6 +21,7 @@ const TextInputField = ({
   onChange,
   endAdornment,
   ref,
+  disabled=false
 }: TextInputFieldProps) => {
   return (
     <div className={`text-input-field-div`}>
@@ -31,6 +33,7 @@ const TextInputField = ({
           placeholder={variants === "default" ? placeholder : ""}
           value={value}
           ref={ref}
+          disabled={disabled}
           required
         />
         <span>{label}</span>

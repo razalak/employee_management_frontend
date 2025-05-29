@@ -1,5 +1,6 @@
 import CreateEmployee from "./createEmployee/createEmployee";
 import Login from "./login/Login";
-import MainPage from "./mainPage/mainPage";
+import { EmployeeDetails} from "./employeeDetails/EmployeeDetails";
+import EditEmployee from "./editEmployee/editEmployee";
 
-export { CreateEmployee, Login, MainPage };
+export { CreateEmployee, Login ,EmployeeDetails,EditEmployee};
