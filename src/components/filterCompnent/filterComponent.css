@@ -1,0 +1,31 @@
+.mainbox{
+    display: flex;
+    flex-direction: row;
+    justify-content:flex-start;
+    width: 243px;
+    height: 40px;
+}
+.labelcontent{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+
+.dropdownbar{
+      display: flex;
+      width: 150px;
+    align-items: center;
+    justify-content: center;
+}
+.dropdownbar select{
+    height: 31px;
+    width: 80%;
+    border-radius: 20px;
+    background-color: #EAF9FF;
+    border: none;
+}
+p{
+    font-size: 18px;
+    font-weight: 400px;
+}

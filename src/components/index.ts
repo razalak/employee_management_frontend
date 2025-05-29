@@ -11,6 +11,7 @@ import { TopButton } from "./topbutton/topbutton";
 import { SingleEmpoyeeList } from "./singleEmployeeList/singleEmployeeList";
 import { EditDeleteButton } from "./edit-delete-button/edit-delete-button";
 import { DeleteConfirm } from "./deleteConfirm/deleteConfirm";
+import { FilterComponent } from "./filterCompnent/fileterComponent";
 export {
   Button,
   Header,
@@ -24,5 +25,6 @@ export {
   TopButton,
   SingleEmpoyeeList,
   EditDeleteButton,
-  DeleteConfirm
+  DeleteConfirm,
+  FilterComponent
 };

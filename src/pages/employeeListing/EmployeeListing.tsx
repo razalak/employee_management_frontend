@@ -2,16 +2,21 @@ import { useNavigate } from "react-router-dom"
 import { SectionHeader, SingleEmpoyeeList,EditDeleteButton, DeleteConfirm } from "../../components"
 import "./EmployeeListing.css"
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 export const EmployeeListing=()=>{
     const navigate=useNavigate();
     const [deleted,setDeleted]=useState(false);
     console.log(deleted)
+    const handleSelectChange=(e:React.ChangeEvent<HTMLSelectElement>)=>{
+        const status=e.target.value;
+        const [searchParams, setSearchParams] = useSearchParams();
+    }
     return (
         <>          
             {deleted&&<DeleteConfirm onClickcancel={()=>{setDeleted(false)}} onClickconfirm={()=>{setDeleted(false);}}/>}
             <main className="employee-listing">
-                <SectionHeader title="Employee List" showButton={true} label="Create Employee" onClick={()=> {navigate("/employee")}} image="/public/assets/plus-icon.png"/>
+                <SectionHeader title="Employee List" showButton={true} label="Create Employee" onClick={()=> {navigate("/employee")}} image="/public/assets/plus-icon.png" onchange={(e)=>{handleSelectChange(e);}}/>
                 <div className="title">
                    <div className="title-component"><p >Employee Name</p></div>
                     <div className="title-component"><p >Employee ID</p></div>
