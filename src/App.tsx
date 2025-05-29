@@ -24,7 +24,7 @@ const Loginrouter=createBrowserRouter(
     children:[
       {index:true,element:<CreateEmployee/>},
       {path:"details/:id",element:<EmployeeDetails/>},
-      {path:"edit",element:<EditEmployee/>},
+      {path:":id/edit",element:<EditEmployee/>},
       {path:"listing",element:<EmployeeListing/>}
     ]
   },
