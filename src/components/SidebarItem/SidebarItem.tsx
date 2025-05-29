@@ -7,7 +7,7 @@ type SidebarItemType = {
 
 const SidebarItem = ({ name, icon }: SidebarItemType) => {
   return (
-    <a className="nav-item" href="#">
+    <a className="nav-item" href="/employee/listing">
       <img className="nav-item-icon" src={icon} alt="employee list icon" />
       <p>{name}</p>
     </a>

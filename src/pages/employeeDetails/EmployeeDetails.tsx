@@ -1,13 +1,14 @@
-import { useParams } from "react-router-dom";
-import { SectionHeader } from "../../components";
+import { useNavigate, useParams } from "react-router-dom";
+import { SectionHeader, TopButton } from "../../components";
 import "./EmployeeDetails.css";
 import { DetailBox } from "../../components/detailBox/detailBox";
 
 export const EmployeeDetails = () => {
   const { id } = useParams();
+  const navigate=useNavigate();
   return (
     <main className="employee-details-page-main">
-      <SectionHeader title={`Employee Details of ${id}`} rightContent={<button className="edit-button">Edit</button>} />
+      <SectionHeader title={`Employee Details of ${id}`} showButton={true} label="Edit" onClick={()=> {navigate("/employee/edit")}} image="/public/assets/plus-icon.png"/>
     <div className="detail-box">
   <DetailBox label="Employee Name" value="Erwin Jose" />
   <DetailBox label="Joining Date" value="12-05-2025" />

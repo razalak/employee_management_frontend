@@ -4,7 +4,7 @@ import Login from "./pages/login/Login";
 import { createBrowserRouter ,RouterProvider} from "react-router-dom";
 import NotFound from "./pages/Notfound/notFound";
 import { MainLayout } from "./components";
-import { CreateEmployee,EmployeeDetails ,EditEmployee} from "./pages";
+import { CreateEmployee,EmployeeDetails ,EditEmployee, EmployeeListing} from "./pages";
 
 
 
@@ -24,7 +24,8 @@ const Loginrouter=createBrowserRouter(
     children:[
       {index:true,element:<CreateEmployee/>},
       {path:"details/:id",element:<EmployeeDetails/>},
-      {path:"edit",element:<EditEmployee/>}
+      {path:"edit",element:<EditEmployee/>},
+      {path:"listing",element:<EmployeeListing/>}
     ]
   },
   {

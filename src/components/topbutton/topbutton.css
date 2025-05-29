@@ -1,0 +1,35 @@
+.top-button{
+    height: 58px;
+    width: 168px;
+    background-color: #EAF9FF;
+    display: flex;
+    align-items: center;
+    gap:20px;
+    padding-right: 30px;
+    border-radius: 30px;
+    border: none;
+}
+
+.round-portion{
+    display: flex;
+    justify-content: flex-start;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%; 
+    background-color: #03AEEE;
+    position: relative;
+    left: 2px;
+    padding: 20px;
+}
+.round-portion img{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+}
+
+.button .label{
+    color:black;
+}
+
+
+

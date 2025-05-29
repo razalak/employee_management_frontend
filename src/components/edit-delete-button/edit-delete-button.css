@@ -1,0 +1,11 @@
+.button-wrap{
+    display: flex;
+    justify-content: flex-start;
+    gap:25px;
+    background: none;
+}
+
+.button-wrap button{
+    background: none;
+    border: none;
+}

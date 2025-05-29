@@ -1,15 +1,19 @@
 import "./sectionHeader.css";
+import { TopButton } from "../topbutton/topbutton";
 
 type SectionHeaderProps = {
   title: string;
-  rightContent?:React.ReactNode;
+  label?:string;
+  onClick?: ()=>void;
+  showButton:Boolean;
+  image?:string;
 };
 
-const SectionHeader = ({ title,rightContent }: SectionHeaderProps) => {
+const SectionHeader = ({ title,label,onClick ,showButton,image}: SectionHeaderProps) => {
   return (
     <div className="section-header">
       <h1>{title}</h1>
-      <div className="right-content">{rightContent}</div>
+       {image&&showButton && label && onClick&&<TopButton onClick={onClick} label={label} image={image}/>}
     </div>
   );
 };

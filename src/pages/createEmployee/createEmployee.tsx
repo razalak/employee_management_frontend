@@ -21,7 +21,7 @@ const CreateEmployee = () => {
 
   return (
     <main className="create-employee-page-main">
-      <SectionHeader title="Create Employee" />
+      <SectionHeader title="Create Employee" showButton={false} />
       <form className="employee-create-form">
         <div className="employee-detail-input-section">
           <TextInputField label="Employee Name" placeholder="Employee Name" />
