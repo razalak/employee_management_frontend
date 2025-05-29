@@ -10,6 +10,7 @@ import TextInputField from "./textInputField/textInputField";
 import { TopButton } from "./topbutton/topbutton";
 import { SingleEmpoyeeList } from "./singleEmployeeList/singleEmployeeList";
 import { EditDeleteButton } from "./edit-delete-button/edit-delete-button";
+import { DeleteConfirm } from "./deleteConfirm/deleteConfirm";
 export {
   Button,
   Header,
@@ -22,5 +23,6 @@ export {
   CheckBox,
   TopButton,
   SingleEmpoyeeList,
-  EditDeleteButton
+  EditDeleteButton,
+  DeleteConfirm
 };
