@@ -7,16 +7,17 @@ type SectionHeaderProps = {
   label?:string;
   onClick?: ()=>void;
   showButton:Boolean;
+  showFilter:Boolean;
   image?:string;
   onchange?:(event:React.ChangeEvent<HTMLSelectElement>)=>void
 };
 
-const SectionHeader = ({ title,label,onClick ,showButton,image,onchange}: SectionHeaderProps) => {
+const SectionHeader = ({ title,label,onClick ,showButton,image,onchange,showFilter}: SectionHeaderProps) => {
   return (
     <div className="section-header">
       <h1>{title}</h1>
       <div className="rightside">
-          <FilterComponent onchange={onchange}/>
+          {showFilter&&<FilterComponent onchange={onchange}/>}
        {image&&showButton && label && onClick&&<TopButton onClick={onClick} label={label} image={image}/>}
        </div>
     </div>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./SidebarItem.css";
 
 type SidebarItemType = {
@@ -7,10 +8,10 @@ type SidebarItemType = {
 
 const SidebarItem = ({ name, icon }: SidebarItemType) => {
   return (
-    <a className="nav-item" href="/employee/listing">
+    <Link className="nav-item" to="/employee/listing">
       <img className="nav-item-icon" src={icon} alt="employee list icon" />
       <p>{name}</p>
-    </a>
+    </Link>
   );
 };
 

@@ -12,6 +12,7 @@ import { SingleEmpoyeeList } from "./singleEmployeeList/singleEmployeeList";
 import { EditDeleteButton } from "./edit-delete-button/edit-delete-button";
 import { DeleteConfirm } from "./deleteConfirm/deleteConfirm";
 import { FilterComponent } from "./filterCompnent/fileterComponent";
+import Form from "./form/form";
 export {
   Button,
   Header,
@@ -26,5 +27,6 @@ export {
   SingleEmpoyeeList,
   EditDeleteButton,
   DeleteConfirm,
-  FilterComponent
+  FilterComponent,
+  Form
 };

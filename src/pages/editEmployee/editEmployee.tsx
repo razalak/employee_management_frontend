@@ -1,63 +1,53 @@
-
-import { Button } from "../../components";
-import { SectionHeader } from "../../components";
-import { SelectInputField } from "../../components";
-import { TextInputField } from "../../components";
-import "./editEmployee.css";
 import { useNavigate } from "react-router-dom";
+import { Form, SectionHeader } from "../../components";
+import "./editEmployee.css";
+import { useEffect, useState } from "react";
+import type { EmployeeType } from "../../types/types";
 
 const EditEmployee = () => {
-  const createClicked = () => alert("Created");
-  const cancelClicked = () => alert("Cancelled");
+  // const { id } = useParams();
   const navigate = useNavigate();
-  const logoutClicked = () => {
-    localStorage.setItem("IsLoggedIn", "false");
-     navigate("/login");
-  };
+  const [employee, setEmployee] = useState({} as EmployeeType);
 
-  const departments = ["HR", "Developer", "UI", "UX"];
-  const roles = ["HR", "Developer", "UI", "UX"];
-  const statuses = ["Active", "Inactive", "Probation"];
+  const editClicked = () => alert("Edited");
+  const cancelClicked = () => navigate(-1);
+
+  useEffect(() => {
+    setEmployee({
+      id: 123,
+      name:"Erwin",
+      email: "erwin@abc.com",
+      employeeId:"7363728",
+      dateOfJoining: new Date(),
+      role: ["Trainee", "L1", "L2", "L3", "CXO"][Math.floor(Math.random() * 5)],
+      status: ["Active", "Inactive", "Probation"][
+        Math.floor(Math.random() * 3)
+      ],
+      experience: Math.floor(Math.random() * 10),
+      age: 7,
+      department: {
+        name: ["HR", "Full Stack", "Devops", "UI Engineer", "Backend"][
+          Math.floor(Math.random() * 5)
+        ],
+      },
+      address: {
+        houseNo: "7773",
+        line1: "sm street",
+        line2: "Narikkuni",
+        pincode: "123456",
+      },
+    } as EmployeeType);
+  }, []);
 
   return (
-    <main className="create-employee-page-main">
-      <SectionHeader title="Edit Employee" showButton={false} />
-      <form className="employee-create-form">
-        <div className="employee-detail-input-section">
-          <TextInputField label="Employee Name" placeholder="Employee Name" />
-          <TextInputField label="Joining Date" placeholder="Joining Date" />
-          <TextInputField label="Experience (Yrs)" placeholder="Experience" />
-          <SelectInputField
-            label="Department"
-            placeholder="Choose Department"
-            name="department"
-            values={departments}
-          />
-          <SelectInputField
-            label="Role"
-            placeholder="Choose Role"
-            name="role"
-            values={roles}
-          />
-          <SelectInputField
-            label="Status"
-            placeholder="Status"
-            name="status"
-            values={statuses}
-          />
-          <div className="multiline-input">
-            <TextInputField label="Address" placeholder="Flat No./House No." />
-            <TextInputField label="" placeholder="Address Line 1" />
-            <TextInputField label="" placeholder="Address Line 2" />
-          </div>
-          <TextInputField label="Employee ID" placeholder="7398378272" disabled={true}/>
-        </div>
-        <div className="form-buttons">
-          <Button label="Create" onClick={createClicked} variants="default" />
-          <Button label="Cancel" onClick={cancelClicked} variants="outline" />
-          <Button label="logout" onClick={logoutClicked} variants="outline" />
-        </div>
-      </form>
+    <main className="edit-employee-page-main">
+      <SectionHeader title="Edit Employee" showButton={false} showFilter={false}/>
+      <Form
+        employee={employee}
+        setEmployee={setEmployee}
+        handleCancel={cancelClicked}
+        handleSave={editClicked}
+      />
     </main>
   );
 };

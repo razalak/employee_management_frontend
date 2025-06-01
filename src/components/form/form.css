@@ -1,0 +1,22 @@
+.employee-detail-input-section {
+  display: flex;
+  gap: 32px;
+  row-gap: 32px;
+  flex-wrap: wrap;
+  margin-bottom: 2em;
+}
+
+.employee-detail-input-section > * {
+  width: 30%;
+}
+
+.multiline-input {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.form-buttons {
+  display: flex;
+  gap: 16px;
+}

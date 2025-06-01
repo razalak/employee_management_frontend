@@ -1,6 +1,7 @@
 import "./textInputField.css";
 
 type TextInputFieldProps = {
+  name?:string
   placeholder: string;
   label: string;
   variants?: string;
@@ -13,6 +14,7 @@ type TextInputFieldProps = {
 };
 
 const TextInputField = ({
+  name,
   placeholder,
   label,
   variants = "default",
@@ -34,6 +36,7 @@ const TextInputField = ({
           value={value}
           ref={ref}
           disabled={disabled}
+          name={name}
           required
         />
         <span>{label}</span>
