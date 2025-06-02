@@ -31,6 +31,7 @@ export const EmployeeStatus = {
 export type Status = (typeof EmployeeStatus)[keyof typeof EmployeeStatus];
 
 export interface Employee {
+  id?:number;
   employeeId: string;
   email: string;
   name: string;

@@ -10,6 +10,7 @@ import { useState } from "react"
 import { useSearchParams } from "react-router-dom"
 import { useSelector } from "react-redux"
 import type { EmployeeState } from "../../store/employee/employee.types"
+import { useAppSelector } from "../../store/store"
 
 export const EmployeeListing = () => {
   const navigate = useNavigate()
@@ -69,8 +70,8 @@ export const EmployeeListing = () => {
   //   }
   // ]
 
-  const employees=useSelector((state:EmployeeState)=>state.employees);
-  
+   const employees = useAppSelector((state) => state.employee.employees);
+   console.log(employees)
   return (
     <>
       {deleted && (

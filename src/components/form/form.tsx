@@ -1,6 +1,5 @@
 import {  useNavigate } from "react-router-dom";
 import useLocalStorage from "../../hooks/useLocalStorage";
-import type { EmployeeType } from "../../types/types";
 import Button from "../button/Button";
 import SelectInputField from "../selectInputField/selectInputField";
 import TextInputField from "../textInputField/textInputField";
@@ -8,8 +7,8 @@ import "./form.css"
 import type { Employee } from "../../store/employee/employee.types";
 
 type EmployeeFormProps = {
-  employee: EmployeeType;
-  setEmployee: (employee: EmployeeType) => void;
+  employee: Employee;
+  setEmployee: (employee: Employee) => void;
   handleCancel: () => void;
   handleSave: () => void;
 };
@@ -20,7 +19,7 @@ const Form = ({
   handleSave,
   setEmployee,
 }: EmployeeFormProps) => {
-  const isEdit = employee.employeeId !== undefined;
+  const isEdit = employee.id !== undefined;
   const navigate=useNavigate();
   const departments = ["HR", "Developer", "UI", "UX"];
   const roles = ["HR", "Full Stack", "Devops", "UI Engineer", "Backend"];

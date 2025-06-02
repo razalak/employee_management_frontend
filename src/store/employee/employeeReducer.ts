@@ -1,17 +1,20 @@
-import { EMPLOYEE_ACTION_TYPES, type EmployeeAction, type EmployeeState } from "./employee.types";
+import { createSlice,type PayloadAction } from "@reduxjs/toolkit";
+import type { Employee,EmployeeState } from "./employee.types";
 
-const initialState={employees:[]};
 
-export default function employeeReducer(state:EmployeeState=initialState,action:EmployeeAction){
-        switch(action.type){
-            case EMPLOYEE_ACTION_TYPES.ADD:{
-                console.log("action",action)
-                  return{
-                    ...state,
-                    employees:[...state.employees,action.payload]
-                }
-            }
-            default:
-                return state;
-        }
-}
+const initialState:EmployeeState={employees:[]};
+
+export const employeeSlice=createSlice({
+    name:'employee',
+    initialState,
+    reducers:{
+        addEmployee:(state,action:PayloadAction<Employee>)=>{
+            console.log("🚀 ~ action:", action)
+            console.log("🚀 ~ state:", state)
+            state.employees.push(action.payload);
+        },
+    }
+})
+
+export const {addEmployee} = employeeSlice.actions;
+export default employeeSlice.reducer;

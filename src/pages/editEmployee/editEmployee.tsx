@@ -4,14 +4,18 @@ import "./editEmployee.css";
 import { useEffect, useState } from "react";
 import type { EmployeeType } from "../../types/types";
 import { useSelector } from "react-redux";
-import type { EmployeeState } from "../../store/employee/employee.types";
+import type { Employee, EmployeeState } from "../../store/employee/employee.types";
+import { useAppSelector } from "../../store/store";
 
 const EditEmployee = () => {
   // const { id } = useParams();
   const navigate = useNavigate();
-  const employees=useSelector((state:EmployeeState)=>state.employees);
+  // const employees=useSelector((state:EmployeeState)=>state.employees);
+  const employees = useAppSelector((state) => state.employee.employees);
   const {id}=useParams();
-  const [employee, setEmployee] = useState(employees.find(((emp)=>emp.employeeId===id)) as EmployeeType);
+  console.log("*******************",employees);
+  const [employee, setEmployee] = useState(employees.find(((emp:any)=>emp.employeeId===id)) as Employee);
+
 
   const editClicked = () => alert("Edited");
   const cancelClicked = () => navigate(-1);

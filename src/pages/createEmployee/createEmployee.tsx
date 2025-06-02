@@ -2,16 +2,18 @@ import { useNavigate } from "react-router-dom";
 import { Form, SectionHeader } from "../../components";
 import "./createEmployee.css";
 import { useState } from "react";
-import type { EmployeeType } from "../../types/types";
 import { useDispatch } from "react-redux";
-import { EMPLOYEE_ACTION_TYPES, type EmployeeState } from "../../store/employee/employee.types";
+import { EMPLOYEE_ACTION_TYPES, type Employee, type EmployeeState } from "../../store/employee/employee.types";
+import { addEmployee } from "../../store/employee/employeeReducer";
 
 const CreateEmployee = () => {
   const navigate = useNavigate();
-  const [employee, setEmployee] = useState({} as EmployeeType);
+  const [employee, setEmployee] = useState({} as Employee);
   const dispatch=useDispatch();
 
   const createClicked = () => {
+    console.log("clicked",employee)
+    employee.id=Math.floor(Math.random()*1000);
       // const Employee:EmployeeType={
       //     employeeId:employee.employeeId?.toString(),
       //     email:employee.email,
@@ -26,7 +28,8 @@ const CreateEmployee = () => {
       //     department:{
       //       name:employee.department?.name
       //     }
-      dispatch({type:EMPLOYEE_ACTION_TYPES.ADD,payload:employee});
+      // dispatch({type:EMPLOYEE_ACTION_TYPES.ADD,payload:employee});
+       dispatch(addEmployee(employee));
   }
   const cancelClicked = () => navigate(-1);
 
