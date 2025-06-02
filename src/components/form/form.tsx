@@ -1,8 +1,11 @@
+import {  useNavigate } from "react-router-dom";
+import useLocalStorage from "../../hooks/useLocalStorage";
 import type { EmployeeType } from "../../types/types";
 import Button from "../button/Button";
 import SelectInputField from "../selectInputField/selectInputField";
 import TextInputField from "../textInputField/textInputField";
 import "./form.css"
+import type { Employee } from "../../store/employee/employee.types";
 
 type EmployeeFormProps = {
   employee: EmployeeType;
@@ -17,12 +20,17 @@ const Form = ({
   handleSave,
   setEmployee,
 }: EmployeeFormProps) => {
-  const isEdit = employee.id !== undefined;
-
+  const isEdit = employee.employeeId !== undefined;
+  const navigate=useNavigate();
   const departments = ["HR", "Developer", "UI", "UX"];
   const roles = ["HR", "Full Stack", "Devops", "UI Engineer", "Backend"];
   const statuses = ["Active", "Inactive", "Probation"];
+   const localStorage = useLocalStorage();
 
+  const handleLogin=()=>{
+    localStorage.set("IsLoggedIn","false");
+    navigate("/login");
+  }
   return (
     <form className="employee-form">
       <div className="employee-detail-input-section">
@@ -182,6 +190,7 @@ const Form = ({
           type="button"
         />
         <Button label="Cancel" onClick={handleCancel} variants="outline" />
+         <Button label="logout" onClick={handleLogin} variants="outline" />
       </div>
     </form>
   );

@@ -26,49 +26,51 @@ export const EmployeeListing = () => {
     }
   }
 
-  const employees = [
-    {
-      name: "Erwin",
-      id: "321",
-      joiningdate: "09-09-2025",
-      role: "Developer",
-      status: "probation",
-      experience: "3 Years"
-    },
-    {
-      name: "Dias George Thomas",
-      id: "721",
-      joiningdate: "09-09-2025",
-      role: "HR",
-      status: "probation",
-      experience: "1 Years"
-    },
-    {
-      name: "Sana",
-      id: "301",
-      joiningdate: "08-09-2024",
-      role: "Intern",
-      status: "Active",
-      experience: "0 Years"
-    },
-    {
-      name: "Muhammed Razal AK",
-      id: "891",
-      joiningdate: "01-09-2024",
-      role: "Developer",
-      status: "inactive",
-      experience: "8 Years"
-    },
-    {
-      name: "Jibin",
-      id: "551",
-      joiningdate: "09-09-2020",
-      role: "Manager",
-      status: "Active",
-      experience: "4 Years"
-    }
-  ]
+  // const employees = [
+  //   {
+  //     name: "Erwin",
+  //     id: "321",
+  //     joiningdate: "09-09-2025",
+  //     role: "Developer",
+  //     status: "probation",
+  //     experience: "3 Years"
+  //   },
+  //   {
+  //     name: "Dias George Thomas",
+  //     id: "721",
+  //     joiningdate: "09-09-2025",
+  //     role: "HR",
+  //     status: "probation",
+  //     experience: "1 Years"
+  //   },
+  //   {
+  //     name: "Sana",
+  //     id: "301",
+  //     joiningdate: "08-09-2024",
+  //     role: "Intern",
+  //     status: "Active",
+  //     experience: "0 Years"
+  //   },
+  //   {
+  //     name: "Muhammed Razal AK",
+  //     id: "891",
+  //     joiningdate: "01-09-2024",
+  //     role: "Developer",
+  //     status: "inactive",
+  //     experience: "8 Years"
+  //   },
+  //   {
+  //     name: "Jibin",
+  //     id: "551",
+  //     joiningdate: "09-09-2020",
+  //     role: "Manager",
+  //     status: "Active",
+  //     experience: "4 Years"
+  //   }
+  // ]
 
+  const employees=useSelector((state:EmployeeState)=>state.employees);
+  
   return (
     <>
       {deleted && (
@@ -89,7 +91,7 @@ export const EmployeeListing = () => {
           showButton={true}
           label="Create Employee"
           onClick={() => {
-            navigate("/employee")
+            navigate("/employee/create")
           }}
           image="/public/assets/plus-icon.png"
           onchange={handleSelectChange}
@@ -104,25 +106,25 @@ export const EmployeeListing = () => {
           <div className="title-component"><p>Experience</p></div>
           <div className="title-component"><p>Action</p></div>
         </div>
-        {employees.filter((employee)=>employee.status===searchParams.get("status")||searchParams.get("status")===null).map((emp) => (
+        {employees.filter((employee)=>employee.status.toLowerCase()===searchParams.get("status")?.toLowerCase()||searchParams.get("status")===null).map((emp) => (
           <SingleEmpoyeeList
             name={emp.name}
-            id={emp.id}
-            joiningdate={emp.joiningdate}
+            id={emp.employeeId}
+            joiningdate={emp.dateOfJoining}
             role={emp.role}
             status={emp.status}
-            experience={emp.experience}
+            experience={`${emp.experience}`}
             action={
               <EditDeleteButton
                 onClickedit={() => {
-                  navigate(`/employee/${emp.id}/edit`)
+                  navigate(`/employee/edit/${emp.employeeId}`)
                 }}
                 onClickdelete={() => {
                   setDeleted(true)
                 }}
               />
             }
-            onClick={()=>{navigate(`/employee/details/:${emp.id}`)}}
+            onClick={()=>{navigate(`/employee/details/:${emp.employeeId}`)}}
           />
         ))}
       </main>

@@ -12,22 +12,21 @@ const CreateEmployee = () => {
   const dispatch=useDispatch();
 
   const createClicked = () => {
-      const Employee:EmployeeType={
-          employeeId:employee.id?.toString(),
-          email:employee.email,
-          name:employee.name,
-          age:employee.age,
-          address:employee.address,
-          password:employee.password,
-          role:employee.role,
-          experience:employee.experience,
-          status:employee.status,
-          department:{
-            name:employee.department?.name
-          }
-      }
-      console.log("emp",Employee);
-      dispatch({type:EMPLOYEE_ACTION_TYPES.ADD,payload:Employee});
+      // const Employee:EmployeeType={
+      //     employeeId:employee.employeeId?.toString(),
+      //     email:employee.email,
+      //     name:employee.name,
+      //     age:employee.age,
+      //     address:employee.address,
+      //     password:employee.password,
+      //     role:employee.role,
+      //     dateOfJoining:employee.dateOfJoining,
+      //     experience:employee.experience,
+      //     status:employee.status,
+      //     department:{
+      //       name:employee.department?.name
+      //     }
+      dispatch({type:EMPLOYEE_ACTION_TYPES.ADD,payload:employee});
   }
   const cancelClicked = () => navigate(-1);
 

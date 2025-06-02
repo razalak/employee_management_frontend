@@ -8,7 +8,7 @@ type SidebarItemType = {
 
 const SidebarItem = ({ name, icon }: SidebarItemType) => {
   return (
-    <Link className="nav-item" to="/employee/listing">
+    <Link className="nav-item" to="/employee">
       <img className="nav-item-icon" src={icon} alt="employee list icon" />
       <p>{name}</p>
     </Link>

@@ -26,10 +26,10 @@ const Loginrouter = createBrowserRouter([
     path: "/employee",
     element: <MainLayout />,
     children: [
-      { index: true, element: <CreateEmployee /> },
+      { index: true, element: <EmployeeListing /> },
       { path: "details/:id", element: <EmployeeDetails /> },
-      { path: ":id/edit", element: <EditEmployee /> },
-      { path: "listing", element: <EmployeeListing /> },
+      { path: "edit/:id", element: <EditEmployee /> },
+      { path: "create", element: <CreateEmployee /> },
     ],
   },
   {

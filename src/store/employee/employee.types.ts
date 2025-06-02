@@ -41,7 +41,9 @@ export interface Employee {
   dateOfJoining: string;
   experience: number;
   status: Status;
-  departmentId: number | string;
+  department?: {
+    name?: string;
+  };
 }
 
 export const EMPLOYEE_ACTION_TYPES = {
