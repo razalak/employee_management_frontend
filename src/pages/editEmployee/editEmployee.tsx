@@ -31,7 +31,7 @@ const EditEmployee = () => {
   const editClicked = () => {
     console.log("emplloye details",employee)
      editEmployee(employee);
-    //  navigate("/employee");
+     navigate("/employee");
   };
   const cancelClicked = () => navigate(-1);
 

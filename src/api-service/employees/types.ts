@@ -8,7 +8,7 @@ export interface CreatePayload{
   role?: string;
   status?: string;
   joiningdate?: string | Date;
-  experience?: number;
+  Experience?: number;
   employeeId?: string;
   address?: {
     line_1?: string;
@@ -29,7 +29,7 @@ export interface EditPayload{
   role?: string;
   status?: string;
   joiningdate?: string | Date;
-  experience?: number;
+  Experience?: number;
   employeeId?: string;
   address?: {
     line_1?: string;
@@ -43,3 +43,8 @@ export interface EditPayload{
 }
 
 export type CreateResponse =void;
+
+export interface Department{
+  id:number;
+  dpt_name:string;
+}

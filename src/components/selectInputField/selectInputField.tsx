@@ -5,7 +5,7 @@ type SelectInputField = {
   label: string;
   name?: string;
   placeholder: string;
-  values: Array<string>;
+  values: Array<{label:string,value:number}>;
   value?:string;
   onChange?:(e:React.ChangeEvent<HTMLSelectElement>)=>void
 };
@@ -24,11 +24,12 @@ const SelectInputField = ({
         {label}
         <select name={name} value={value} onChange={onChange}required>
           <option value="" selected hidden disabled>
-            {placeholder}
+            
+            { placeholder}
           </option>
-          {values.map((item) => (
-            <option  value={item}>
-              {item}
+          {values.map(({label,value}) => (
+            <option  value={value}>
+              {label}
             </option>
           ))}
         </select>

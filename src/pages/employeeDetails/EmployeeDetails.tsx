@@ -38,7 +38,7 @@ const employeeDetails = [
         showButton={true}
         label="Edit"
         onClick={() => {
-          navigate(`/employee/${id}/edit`);
+          navigate(`/employee/edit/${id}`);
         }}
         image="/public/assets/plus-icon.png"
       />

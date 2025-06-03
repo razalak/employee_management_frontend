@@ -5,6 +5,7 @@ import SelectInputField from "../selectInputField/selectInputField";
 import TextInputField from "../textInputField/textInputField";
 import "./form.css"
 import type { Employee } from "../../store/employee/employee.types";
+import { useGetDepartmentListQuery } from "../../api-service/employees/employees.api";
 
 type EmployeeFormProps = {
   employee: Employee;
@@ -21,15 +22,24 @@ const Form = ({
 }: EmployeeFormProps) => {
   const isEdit = employee.id !== undefined;
   const navigate=useNavigate();
-  const roles = ["HR", "DEVELOPER", "UI", "UX"];
-  const departments = ["FRONTEND","DEVOPS","BACKEND"];
-  const statuses = ["ACTIVE", "INACTIVE", "PROBATION"];
-   const localStorage = useLocalStorage();
+  const roles = [{label:"HR",value:0},{label:"DEVELOPER",value:1},{label:"UI",value:2},{label:"UX",value:3}];
+  // const departments = ["FRONTEND","DEVOPS","BACKEND"];
+  const statuses = [{label:"ACTIVE",value:0},{label:"INACTIVE",value:1},{label:"PROBATION",value:3}];
+  const localStorage = useLocalStorage();
+
+  const {data: departmentData}=useGetDepartmentListQuery();
 
   const handleLogin=()=>{
     localStorage.set("token","");
     navigate("/login");
   }
+
+
+
+
+   console.log({employee});
+   
+
   return (
     <form className="employee-form">
       <div className="employee-detail-input-section">
@@ -55,7 +65,7 @@ const Form = ({
           label="Password"
           placeholder="Password"
           name="password"
-          value={""}
+          value={employee.password}
           // style={{ display: "none" }}
           onChange={(e) => {
             setEmployee({ ...employee, [e.target.name]: e.target.value });
@@ -83,7 +93,7 @@ const Form = ({
         <TextInputField
           label="Experience (Yrs)"
           placeholder="Experience"
-          name="experience"
+          name="Experience"
           value={employee.Experience}
           onChange={(e) => {
             setEmployee({ ...employee, [e.target.name]: e.target.value });
@@ -93,10 +103,12 @@ const Form = ({
           label="Department"
           placeholder="Choose Department"
           name="department"
-          values={departments}
-          value={employee.department?.dpt_name}
+          values={departmentData ? departmentData.map((dep) => ({
+            value: dep.id,
+            label: dep.dpt_name
+          })) : []}
           onChange={(e) => {
-            setEmployee({ ...employee, department: { dpt_name: e.target.value } });
+            setEmployee({ ...employee, department: { id:parseInt(e.target.value),dpt_name: e.target.options[e.target.selectedIndex].text } });
           }}
         />
         <SelectInputField
@@ -104,9 +116,8 @@ const Form = ({
           placeholder="Choose Role"
           name="role"
           values={roles}
-          value={employee.role}
           onChange={(e) => {
-            setEmployee({ ...employee, [e.target.name]: e.target.value });
+            setEmployee({ ...employee, [e.target.name]: e.target.options[e.target.selectedIndex].text});
           }}
         />
         <SelectInputField
@@ -114,9 +125,8 @@ const Form = ({
           placeholder="Status"
           name="status"
           values={statuses}
-          value={employee.status}
           onChange={(e) => {
-            setEmployee({ ...employee, [e.target.name]: e.target.value });
+            setEmployee({ ...employee, [e.target.name]: e.target.options[e.target.selectedIndex].text});
           }}
         />
 

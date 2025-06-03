@@ -31,7 +31,7 @@ const CreateEmployee = () => {
     createEmployee({
       ...employee,
       age: Number(employee.age),
-      experience: Number(employee.Experience),
+      Experience: Number(employee.Experience),
       joiningdate: new Date(employee.joiningdate),
       address: {
         ...employee.address,

@@ -1,7 +1,7 @@
 import { EditEmployee } from "../../pages";
 import type { Employee } from "../../store/employee/employee.types";
 import BaseApi from "../api";
-import type { CreatePayload, CreateResponse, EditPayload } from "./types";
+import type { CreatePayload, CreateResponse, Department, EditPayload } from "./types";
 
 export const employeeApi = BaseApi.injectEndpoints({
   endpoints: (builder) => ({
@@ -34,11 +34,18 @@ export const employeeApi = BaseApi.injectEndpoints({
       invalidatesTags: ["EMPLOYEES"],
     }),
     EditEmployee: builder.mutation<CreatePayload, EditPayload>({
-      query: ({id,...payload}) => ({
+      query: ({ id, ...payload }) => ({
         url: `/employees/${id}`,
         method: "PUT",
-        body:payload
+        body: payload,
       }),
+    }),
+    getDepartmentList: builder.query<Department[], void>({
+      query: () => ({
+        url: "/department",
+        method: "GET",
+      }),
+      providesTags: ["DEPARTMENTS"],
     }),
   }),
 });
@@ -49,4 +56,5 @@ export const {
   useGetEmployeeQuery,
   useDeleteEmployeeMutation,
   useEditEmployeeMutation,
+  useGetDepartmentListQuery
 } = employeeApi;
