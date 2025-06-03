@@ -1,10 +1,12 @@
 .main-layout-aside {
+  overflow: hidden;
   background-color: white;
   width: 300px;
   flex-shrink: 0;
 }
 
 .main-layout-aside-nav {
+  overflow: hidden;
   margin-top: 2em;
   display: flex;
   flex-direction: column;

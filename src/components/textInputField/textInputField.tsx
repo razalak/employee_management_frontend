@@ -6,7 +6,7 @@ type TextInputFieldProps = {
   label: string;
   variants?: string;
   type?: string;
-  value?: string;
+  value?: string|number;
   ref?: React.RefObject<HTMLInputElement | null>;
   endAdornment?: React.ReactNode;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;

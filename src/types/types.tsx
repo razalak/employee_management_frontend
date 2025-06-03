@@ -6,7 +6,7 @@ export type EmployeeType = {
   age?: number;
   role?: string;
   status?: string;
-  dateOfJoining?: string;
+  dateOfJoining?: Date;
   experience?: number;
   employeeId?: string;
   address?: {

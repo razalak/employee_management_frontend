@@ -4,20 +4,35 @@ import "./editEmployee.css";
 import { useEffect, useState } from "react";
 import type { EmployeeType } from "../../types/types";
 import { useSelector } from "react-redux";
-import type { Employee, EmployeeState } from "../../store/employee/employee.types";
+import type {
+  Employee,
+  EmployeeState,
+} from "../../store/employee/employee.types";
 import { useAppSelector } from "../../store/store";
+import { useEditEmployeeMutation, useGetEmployeeQuery } from "../../api-service/employees/employees.api";
 
 const EditEmployee = () => {
-  // const { id } = useParams();
+  const { id } = useParams();
+  console.log("id---", id);
+  if (!id) {
+    return <p>id is undefined</p>;
+  }
+  const empData = useGetEmployeeQuery({ id });
+  const singleEmployee = empData.currentData;
   const navigate = useNavigate();
-  // const employees=useSelector((state:EmployeeState)=>state.employees);
-  const employees = useAppSelector((state) => state.employee.employees);
-  const {id}=useParams();
-  console.log("*******************",employees);
-  const [employee, setEmployee] = useState(employees.find(((emp:any)=>emp.employeeId===id)) as Employee);
+  const [employee, setEmployee] = useState<Employee>({} as Employee);
+  const [editEmployee]=useEditEmployeeMutation();
+  useEffect(() => {
+    if(singleEmployee){
+    setEmployee(singleEmployee);
+    }
+  }, [singleEmployee]);
 
-
-  const editClicked = () => alert("Edited");
+  const editClicked = () => {
+    console.log("emplloye details",employee)
+     editEmployee(employee);
+    //  navigate("/employee");
+  };
   const cancelClicked = () => navigate(-1);
 
   // useEffect(() => {
@@ -47,12 +62,13 @@ const EditEmployee = () => {
   //   } as EmployeeType);
   // }, []);
 
-
- 
-
   return (
     <main className="edit-employee-page-main">
-      <SectionHeader title="Edit Employee" showButton={false} showFilter={false}/>
+      <SectionHeader
+        title="Edit Employee"
+        showButton={false}
+        showFilter={false}
+      />
       <Form
         employee={employee}
         setEmployee={setEmployee}

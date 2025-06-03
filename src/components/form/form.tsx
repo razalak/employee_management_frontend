@@ -21,13 +21,13 @@ const Form = ({
 }: EmployeeFormProps) => {
   const isEdit = employee.id !== undefined;
   const navigate=useNavigate();
-  const departments = ["HR", "Developer", "UI", "UX"];
-  const roles = ["HR", "Full Stack", "Devops", "UI Engineer", "Backend"];
-  const statuses = ["Active", "Inactive", "Probation"];
+  const roles = ["HR", "DEVELOPER", "UI", "UX"];
+  const departments = ["FRONTEND","DEVOPS","BACKEND"];
+  const statuses = ["ACTIVE", "INACTIVE", "PROBATION"];
    const localStorage = useLocalStorage();
 
   const handleLogin=()=>{
-    localStorage.set("IsLoggedIn","false");
+    localStorage.set("token","");
     navigate("/login");
   }
   return (
@@ -55,7 +55,7 @@ const Form = ({
           label="Password"
           placeholder="Password"
           name="password"
-          value={employee.password}
+          value={""}
           // style={{ display: "none" }}
           onChange={(e) => {
             setEmployee({ ...employee, [e.target.name]: e.target.value });
@@ -65,7 +65,7 @@ const Form = ({
           label="Age"
           placeholder="Age"
           name="age"
-          value={employee.age?.toString()}
+          value={employee.age}
           onChange={(e) => {
             setEmployee({ ...employee, [e.target.name]: e.target.value });
           }}
@@ -73,12 +73,9 @@ const Form = ({
         <TextInputField
           label="Joining Date"
           placeholder="Joining Date"
-          name="dateOfJoining"
-          value={
-            employee.dateOfJoining
-              ? `${(employee.dateOfJoining)}`
-              : ""
-          }
+          name="joiningdate"
+          type="date"
+          value={employee.joiningdate}
           onChange={(e) => {
             setEmployee({ ...employee, [e.target.name]: e.target.value });
           }}
@@ -87,7 +84,7 @@ const Form = ({
           label="Experience (Yrs)"
           placeholder="Experience"
           name="experience"
-          value={employee.experience?.toString()}
+          value={employee.Experience}
           onChange={(e) => {
             setEmployee({ ...employee, [e.target.name]: e.target.value });
           }}
@@ -97,9 +94,9 @@ const Form = ({
           placeholder="Choose Department"
           name="department"
           values={departments}
-          value={employee.department?.name}
+          value={employee.department?.dpt_name}
           onChange={(e) => {
-            setEmployee({ ...employee, department: { name: e.target.value } });
+            setEmployee({ ...employee, department: { dpt_name: e.target.value } });
           }}
         />
         <SelectInputField
@@ -127,8 +124,8 @@ const Form = ({
           <TextInputField
             label="Address"
             placeholder="Flat No./House No."
-            name="houseNo"
-            value={employee.address?.houseNo}
+            name="houseno"
+            value={employee.address?.houseno}
             onChange={(e) => {
               setEmployee({
                 ...employee,
@@ -142,8 +139,8 @@ const Form = ({
           <TextInputField
             label=""
             placeholder="Address Line 1"
-            name="line1"
-            value={employee.address?.line1}
+            name="line_1"
+            value={employee.address?.line_1}
             onChange={(e) => {
               setEmployee({
                 ...employee,
@@ -157,8 +154,8 @@ const Form = ({
           <TextInputField
             label=""
             placeholder="Address Line 2"
-            name="line2"
-            value={employee.address?.line2}
+            name="line_2"
+            value={employee.address?.line_2}
             onChange={(e) => {
               setEmployee({
                 ...employee,
@@ -189,7 +186,6 @@ const Form = ({
           type="button"
         />
         <Button label="Cancel" onClick={handleCancel} variants="outline" />
-         <Button label="logout" onClick={handleLogin} variants="outline" />
       </div>
     </form>
   );

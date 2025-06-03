@@ -7,10 +7,9 @@
  */
 
 export interface Address {
-  houseNo: string;
-  line1: string;
-  line2: string;
-  pincode: string;
+  houseno: number;
+  line_1: string;
+  line_2: string;
 }
 
 export const EmployeeRole = {
@@ -39,11 +38,12 @@ export interface Employee {
   address: Address;
   password: string;
   role: Role;
-  dateOfJoining: string;
-  experience: number;
+  joiningdate: string;
+  Experience: number;
   status: Status;
   department?: {
-    name?: string;
+    id?:number;
+    dpt_name?: string;
   };
 }
 

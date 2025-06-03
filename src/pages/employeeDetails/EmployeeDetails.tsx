@@ -2,20 +2,33 @@ import { useNavigate, useParams } from "react-router-dom";
 import { SectionHeader } from "../../components";
 import "./EmployeeDetails.css";
 import { DetailBox } from "../../components/detailBox/detailBox";
+import { useGetEmployeeQuery } from "../../api-service/employees/employees.api";
 
 export const EmployeeDetails = () => {
   const { id } = useParams();
+ 
+  console.log("id---",id);
+  if(!id){
+    return <p>id is undefined</p>
+  }
+  const empData = useGetEmployeeQuery({id});
+  const employee=empData.currentData;
+  console.log("Employee data",employee);
   const navigate = useNavigate();
 
-  const employeeDetails = [
-    { label: "Employee Name", value: "Erwin Jose" },
-    { label: "Joining Date", value: "12-05-2025" },
-    { label: "Experience", value: "0 Years" },
-    { label: "Role", value: "Backend" },
-    { label: "Status", value: "Probation" },
-    { label: "Address", value: "Sm Street 983983939 jnoiifnroifnreirinvrovu" },
-    { label: "Employee ID", value: "7363827" },
-  ];
+const employeeDetails = [
+  { label: "Employee Name", value: employee?.name },
+  { label: "Joining Date", value: employee?.joiningdate },
+  { label: "Experience", value: `${employee?.Experience} Years` },
+  { label: "Role", value: employee?.role },
+  { label: "Status", value: employee?.status },
+  {
+    label: "Address",
+    value: `${employee?.address?.line_1 ?? ""} ${employee?.address?.line_2 ?? ""} ${employee?.address?.houseno ?? ""}`
+  },
+  { label: "Employee ID", value: employee?.employeeId },
+];
+
 
   return (
     <main className="employee-details-page-main">
@@ -31,7 +44,7 @@ export const EmployeeDetails = () => {
       />
       <div className="detail-box">
         {employeeDetails.slice(0, 5).map((item) => (
-          <DetailBox label={item.label} value={item.value} />
+          <DetailBox label={item.label} value={item.value}   isStatus={item.label === "Status"} />
         ))}
 
         <div className="row-separator"></div>

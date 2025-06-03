@@ -2,10 +2,11 @@ import "./edit-delete-button.css"
 
 type buttontype={
     onClickedit?:()=>void,
-    onClickdelete?:()=>void
+    onClickdelete?:()=>void,
+    type?: "submit" | "reset" | "button" | undefined;
 }
 
-export const EditDeleteButton=({onClickedit,onClickdelete}:buttontype)=>{
+export const EditDeleteButton=({onClickedit,onClickdelete,type}:buttontype)=>{
     const onEdit=(event: { stopPropagation: () => void })=>{
         event.stopPropagation();
         if(onClickedit)
@@ -20,8 +21,8 @@ export const EditDeleteButton=({onClickedit,onClickdelete}:buttontype)=>{
     return (
         <>
         <div className="button-wrap">
-            <button onClick={onDelete}><img src="/public/assets/delete.png" alt="delete"/></button>
-            <button onClick={onEdit}><img src="/public/assets/edit.png" alt="edit"/></button>
+            <button onClick={onDelete} type="button"><img src="/public/assets/delete.png" alt="delete"/></button>
+            <button onClick={onEdit} type="button"><img src="/public/assets/edit.png" alt="edit"/></button>
         </div>
         </>
     )

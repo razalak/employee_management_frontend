@@ -8,7 +8,7 @@ import { Navigate } from "react-router-dom";
 
 
 const MainLayout = () => {
-if(localStorage.getItem("IsLoggedIn")==="false"){
+if(!localStorage.getItem("token")){
   return <Navigate to="/login"/>
 }
   return (

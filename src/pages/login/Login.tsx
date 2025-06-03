@@ -7,15 +7,18 @@ import { useEffect, useRef, useState } from "react";
 // import useMousePointer from "../../hooks/useMousePointer";
 import useLocalStorage from "../../hooks/useLocalStorage";
 import { Navigate, useNavigate } from "react-router-dom";
+import { useLoginMutation } from "../../api-service/auth/login.api";
 
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [error,setError]=useState("")
   const [validationErrors, setValidationErrors] = useState({
     usernameError: "",
     passwordError: "",
   });
+ 
   const usernameRef = useRef<HTMLInputElement | null>(null);
   // const mousePosition = useMousePointer();
   const localStorageHook = useLocalStorage();
@@ -24,17 +27,33 @@ const Login = () => {
   );
    const navigate=useNavigate();
   
- 
- const handleLogin=()=>{
-    if(username==="dias"&&password==="12345"){
-    localStorage.setItem("IsLoggedIn","true");
+  const [login,{isLoading}]=useLoginMutation();
+
+
+ const handleLogin=async()=>{
+  //   if(username==="dias"&&password==="12345"){
+  //   localStorage.setItem("IsLoggedIn","true");
+  //   navigate("/employee");
+  // }
+  // const response =await login({email:username,password:password});
+  // localStorage.setItem("token",response.data? response.data.accessToken:"");
+
+  // if(response.data) navigate("/employee");
+
+  login({email:username,password:password})
+  .unwrap()
+  .then((response)=>{
+    localStorage.setItem("token",response.accessToken);
     navigate("/employee");
-  }
+  }).catch((error)=>{
+    console.log(error)
+    setError(error.data.message);
+  })
 }
 
 
   useEffect(() => {
-    if (username.length > 10) {
+    if (username.length > 20) {
       setValidationErrors((err) => {
         return { ...err, usernameError: "Username too long" };
       });
@@ -56,7 +75,7 @@ const Login = () => {
   }, []);
 
 
-  if(localStorage.getItem("IsLoggedIn")==="true"){
+  if(localStorage.getItem("token")){
     return <Navigate to="/employee"/>
   }
   return (
@@ -137,9 +156,14 @@ const Login = () => {
                 username + ` ${password && `& password: ${password}`}`
               }`}
           </p>
+          <div style={{color:"red"}}>
+          {error&&error}
+          </div>
           <Button
             label="Log In"
             onClick={handleLogin}
+            isLoading={isLoading}
+            disabled={isLoading}
             variants="default full-width"
           />
         </div>

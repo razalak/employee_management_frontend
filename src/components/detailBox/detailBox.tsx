@@ -1,25 +1,25 @@
 import "./detailBox.css"
 
 type detailBoxtype={
-    label:string,
-    value:string
+    label?:string,
+    value?:string,
+    isStatus?:boolean
 }
 
-export const DetailBox=({label: label,value}:detailBoxtype)=>{
-//     const chooseColor=(label:string)=>{
-//      if(label==="probation"){
-//         return "#F5ECB8";
-//      }else if(status==="Active"){
-//         return "#D3F4BE";
-//      }else{
-//         return "#FFBFBF";
-//      }
-//    }
+export const DetailBox=({label: label,value,isStatus}:detailBoxtype)=>{
+  const bgColor =
+    isStatus && value === "ACTIVE"
+      ? "#D3F4BE"
+      : isStatus && value === "PROBATION"
+      ? "#F5ECB8"
+      : isStatus && value === "INACTIVE"
+      ? "#FFBFBF"
+      : "transparent";
 
     return (
         <div className="data-segment">
         <p className="label">{label}</p>
-        <p className="value" >{value}</p>
+        <div className="value"><p style={{backgroundColor:bgColor}}>{value}</p></div>
         </div>
     )
 }
