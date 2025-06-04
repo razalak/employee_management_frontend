@@ -1,0 +1,117 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`Login Page > should match snapshot 1`] = `
+<div>
+  <div
+    class="login-content"
+  >
+    <aside
+      class="login-aside"
+    >
+      <img
+        alt="stock image for login"
+        class="circle-img"
+        src="/assets/kv-login.jpeg"
+      />
+    </aside>
+    <main
+      class="login-main"
+    >
+      <div
+        class="login-form-content"
+      >
+        <div
+          class="logo-div"
+        >
+          <a
+            href="#"
+          >
+            <img
+              alt="logo"
+              class="logo"
+              src="/assets/kv-logo.png"
+            />
+          </a>
+        </div>
+        <div>
+          <div
+            class="text-input-field-div"
+          >
+            <label
+              class="label--animated"
+            >
+              <input
+                class="input--animated"
+                placeholder=""
+                required=""
+                type="text"
+                value=""
+              />
+              <span>
+                Username
+              </span>
+              <div
+                class="end-adornment"
+              >
+                <button
+                  style="background: none; font-size: 16px; cursor: pointer; display: none;"
+                  type="button"
+                >
+                  ×
+                </button>
+              </div>
+            </label>
+          </div>
+          <p
+            style="margin-left: 6px; color: red;"
+          >
+            Username is required
+          </p>
+        </div>
+        <div>
+          <div
+            class="text-input-field-div"
+          >
+            <label
+              class="label--animated"
+            >
+              <input
+                class="input--animated"
+                placeholder=""
+                required=""
+                type="password"
+                value=""
+              />
+              <span>
+                Password
+              </span>
+              <div
+                class="end-adornment"
+              />
+            </label>
+          </div>
+          <label>
+            <input
+              name="show-password"
+              type="checkbox"
+            />
+            <span>
+              Show password
+            </span>
+          </label>
+        </div>
+        <p />
+        <div
+          style="color: red;"
+        />
+        <button
+          class="button  button--default button--full-width undefined"
+          type="submit"
+        >
+          Log In
+        </button>
+      </div>
+    </main>
+  </div>
+</div>
+`;

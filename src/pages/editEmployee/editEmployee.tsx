@@ -22,9 +22,19 @@ const EditEmployee = () => {
   const navigate = useNavigate();
   const [employee, setEmployee] = useState<Employee>({} as Employee);
   const [editEmployee]=useEditEmployeeMutation();
+
+  function formatDate(date:string) {
+    const updatedDate=new Date(date);
+  const month = String(updatedDate.getMonth() + 1).padStart(2, '0');
+  const day = String(updatedDate.getDate()).padStart(2, '0');
+  const year = String(updatedDate.getFullYear());
+  return `${year}-${month}-${day}`;
+}
+
   useEffect(() => {
+    console.log("single employee",singleEmployee)
     if(singleEmployee){
-    setEmployee(singleEmployee);
+    setEmployee({...singleEmployee,joiningdate:formatDate(singleEmployee.joiningdate)});
     }
   }, [singleEmployee]);
 

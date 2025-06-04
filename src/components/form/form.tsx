@@ -22,9 +22,9 @@ const Form = ({
 }: EmployeeFormProps) => {
   const isEdit = employee.id !== undefined;
   const navigate=useNavigate();
-  const roles = [{label:"HR",value:0},{label:"DEVELOPER",value:1},{label:"UI",value:2},{label:"UX",value:3}];
+  const roles = [{label:"HR",value:"HR"},{label:"DEVELOPER",value:"DEVELOPER"},{label:"UI",value:"UI"},{label:"UX",value:"UX"}];
   // const departments = ["FRONTEND","DEVOPS","BACKEND"];
-  const statuses = [{label:"ACTIVE",value:0},{label:"INACTIVE",value:1},{label:"PROBATION",value:3}];
+  const statuses = [{label:"ACTIVE",value:"ACTIVE"},{label:"INACTIVE",value:"INACTIVE"},{label:"PROBATION",value:"PROBATION"}];
   const localStorage = useLocalStorage();
 
   const {data: departmentData}=useGetDepartmentListQuery();
@@ -65,7 +65,8 @@ const Form = ({
           label="Password"
           placeholder="Password"
           name="password"
-          value={employee.password}
+          disabled={isEdit?true:false}
+          value=""
           // style={{ display: "none" }}
           onChange={(e) => {
             setEmployee({ ...employee, [e.target.name]: e.target.value });
@@ -103,6 +104,7 @@ const Form = ({
           label="Department"
           placeholder="Choose Department"
           name="department"
+          value={employee.department?.id}
           values={departmentData ? departmentData.map((dep) => ({
             value: dep.id,
             label: dep.dpt_name
@@ -115,6 +117,7 @@ const Form = ({
           label="Role"
           placeholder="Choose Role"
           name="role"
+           value={employee.role}
           values={roles}
           onChange={(e) => {
             setEmployee({ ...employee, [e.target.name]: e.target.options[e.target.selectedIndex].text});
@@ -124,6 +127,7 @@ const Form = ({
           label="Status"
           placeholder="Status"
           name="status"
+          value={employee.status}
           values={statuses}
           onChange={(e) => {
             setEmployee({ ...employee, [e.target.name]: e.target.options[e.target.selectedIndex].text});
