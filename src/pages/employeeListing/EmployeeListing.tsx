@@ -36,7 +36,7 @@ export const EmployeeListing = () => {
   const employees = data.currentData;
 
   const [deleteEmployee] = useDeleteEmployeeMutation();
-  console.log("Fetched employees:", data);
+  console.log("Fetched employees:", employees);
 
   useEffect(() => {
     if (deleted) {

@@ -63,10 +63,10 @@ const Form = ({
         />
         <TextInputField
           label="Password"
-          placeholder="Password"
+          placeholder={isEdit?"You cannot edit password":"password"}
           name="password"
-          disabled={isEdit?true:false}
-          value=""
+          disabled={isEdit}
+           value={isEdit ? "" : employee.password || ""}
           // style={{ display: "none" }}
           onChange={(e) => {
             setEmployee({ ...employee, [e.target.name]: e.target.value });
@@ -86,7 +86,7 @@ const Form = ({
           placeholder="Joining Date"
           name="joiningdate"
           type="date"
-          value={employee.joiningdate}
+         value={employee.joiningdate?.toString().slice(0, 10)}
           onChange={(e) => {
             setEmployee({ ...employee, [e.target.name]: e.target.value });
           }}

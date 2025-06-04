@@ -39,7 +39,7 @@ const EditEmployee = () => {
   }, [singleEmployee]);
 
   const editClicked = () => {
-    console.log("emplloye details",employee)
+    console.log("emplloye details",employee);
      editEmployee(employee);
      navigate("/employee");
   };
