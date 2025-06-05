@@ -18,7 +18,7 @@ export const EmployeeDetails = () => {
 
 const employeeDetails = [
   { label: "Employee Name", value: employee?.name },
-  { label: "Joining Date", value: employee?.joiningdate },
+  { label: "Joining Date", value: employee?.joiningdate.split('T')[0] },
   { label: "Experience", value: `${employee?.Experience} Years` },
   { label: "Role", value: employee?.role },
   { label: "Status", value: employee?.status },

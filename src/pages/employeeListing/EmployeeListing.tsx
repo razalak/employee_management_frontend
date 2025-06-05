@@ -167,7 +167,7 @@ export const EmployeeListing = () => {
             <SingleEmpoyeeList
               name={emp.name}
               id={emp.employeeId}
-              joiningdate={emp.joiningdate}
+              joiningdate={emp.joiningdate.split('T')[0] }
               role={emp.role}
               status={emp.status}
               experience={emp.Experience}
